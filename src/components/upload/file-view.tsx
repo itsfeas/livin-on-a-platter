@@ -1,8 +1,7 @@
-"use client";
-
 import React, { ChangeEvent, useState } from 'react';
+import SelectFileInterface from '@/components/common/type/select-file';
 
-const FileUpload: React.FC = () => {
+const FileUploadComponent: React.FC<SelectFileInterface> = () => {
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
     const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -27,4 +26,4 @@ const FileUpload: React.FC = () => {
     );
 };
 
-export default FileUpload;
+export default FileUploadComponent;
