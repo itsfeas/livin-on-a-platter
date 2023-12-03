@@ -1,13 +1,25 @@
-import React, { ChangeEvent, HTMLAttributes } from 'react';
-import SelectFileInterface from '@/components/common/type/select-file';
+"use client";
+import { redirect } from 'next/navigation';
+import React, { ChangeEvent, HTMLAttributes, useState } from 'react';
 
-const UploadBtn: React.FC<SelectFileInterface> = ({
-    setSelectedFile
+interface UploadButtonInterface {
+    redirectUrl: string
+}
+
+const UploadButton: React.FC<UploadButtonInterface> = ({
+    redirectUrl
 }) => {
     const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0] || null;
-        setSelectedFile(file);
+        if (!file) {
+            alert("Please select a another file!")
+            return;
+        };
+        localStorage.setItem("file", file.webkitRelativePath);
+        redirect(redirectUrl);
     };
+
+
     return (
         <div className="p-20 bg-white rounded">
             <label className="flex items-center justify-center p-4 border-dashed border-2 border-gray-300 rounded cursor-pointer">
@@ -16,10 +28,11 @@ const UploadBtn: React.FC<SelectFileInterface> = ({
                     type="file"
                     className="hidden"
                     onChange={handleFileChange}
+                    accept=".jpg, .jpeg, .png"
                 />
             </label>
         </div>
     );
 }
 
-export default UploadBtn;
+export default UploadButton;
