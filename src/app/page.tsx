@@ -1,5 +1,5 @@
-import Block from '@/components/blocks/block'
-import FileUpload from '@/components/upload/file-upload'
+import Block from '@/components/blocks/block';
+import FileUpload from '@/components/upload/file-upload';
 
 export default function Home() {
   return (
