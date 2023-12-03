@@ -1,5 +1,5 @@
 "use client";
-import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import React, { ChangeEvent, HTMLAttributes, useState } from 'react';
 
 interface UploadButtonInterface {
@@ -9,14 +9,15 @@ interface UploadButtonInterface {
 const UploadButton: React.FC<UploadButtonInterface> = ({
     redirectUrl
 }) => {
-    const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const router = useRouter();
+    const handleFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0] || null;
         if (!file) {
             alert("Please select a another file!")
             return;
         };
         localStorage.setItem("file", file.webkitRelativePath);
-        redirect(redirectUrl);
+        router.push(redirectUrl);
     };
 
 
