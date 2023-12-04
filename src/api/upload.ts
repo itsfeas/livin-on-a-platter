@@ -7,4 +7,6 @@ const uploadFile = async (file: File) => {
     return await httpClient.post<ImageUploadResponse>("http://localhost:8080/", formData);
 }
 
-export default uploadFile;
+export const uploadApi = {
+    uploadFile
+};

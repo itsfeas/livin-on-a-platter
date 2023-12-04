@@ -4,7 +4,7 @@ import React, { useContext, useEffect } from 'react';
 import FileContext from './context/file-context';
 import { useRouter } from 'next/navigation';
 import BaseButton from '../common/btn/common-btn';
-import uploadFile from '@/api/upload';
+import { uploadApi } from '@/api/upload';
 
 const FileUploadComponent: React.FC = () => {
     const { file, setFile } = useContext(FileContext);
@@ -12,7 +12,7 @@ const FileUploadComponent: React.FC = () => {
 
     const handleConfirm = () => {
         if (!file) return;
-        uploadFile(file)
+        uploadApi.uploadFile(file)
             .then(value => console.log(value))
             .then(_ => setFile(null))
             .then(_ => router.push('/success'));
