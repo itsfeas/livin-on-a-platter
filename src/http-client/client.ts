@@ -1,8 +1,8 @@
 interface RequestOptions {
-    method?: 'GET' | 'POST' | 'DELETE';
     headers?: HeadersInit;
-    body?: BodyInit;
 }
+
+const SERVER = "http://localhost:8080/api/v1/";
 
 const handleResponse = async (response: Response) => {
     if (!response.ok) {
@@ -34,6 +34,7 @@ const del = async <T>(url: string, options?: RequestOptions): Promise<T> => {
 }
 
 export const httpClient = {
+    SERVER,
     get,
     post,
     delete: del,
