@@ -4,14 +4,18 @@ import React, { useContext, useEffect } from 'react';
 import FileContext from './context/file-context';
 import { useRouter } from 'next/navigation';
 import BaseButton from '../common/btn/common-btn';
+import uploadFile from '@/http-client/method/upload';
 
 const FileUploadComponent: React.FC = () => {
     const { file, setFile } = useContext(FileContext);
     const router = useRouter();
 
     const handleConfirm = () => {
-        setFile(null);
-        router.push('/success');
+        if (!file) return;
+        uploadFile(file)
+            .then(value => console.log(value))
+            .then(_ => setFile(null))
+            .then(_ => router.push('/success'));
     };
 
     const handleCancel = () => {
