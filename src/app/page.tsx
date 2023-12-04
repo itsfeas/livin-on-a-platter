@@ -1,7 +1,10 @@
+"use client";
+
 import Block from '@/components/blocks/block';
 import BaseLayout from '@/components/common/layout/base-layout';
 import FileContext from '@/components/upload/context/file-context';
 import FileUpload from '@/components/upload/file-upload';
+import FileView from '@/components/upload/file-view';
 import { useState } from 'react';
 
 const ViewPage: React.FC = () => {
@@ -9,11 +12,8 @@ const ViewPage: React.FC = () => {
   return (
     <BaseLayout>
       <Block minHeightScreen>
-        <FileContext.Provider value={{
-          file,
-          setFile
-          }} >
-          <FileUpload />
+        <FileContext.Provider value={{ file, setFile }} >
+          { file ? <FileView /> : <FileUpload /> }
         </FileContext.Provider>
       </Block>
     </BaseLayout>
