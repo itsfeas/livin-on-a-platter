@@ -4,7 +4,7 @@ import React, { useContext, useEffect } from 'react';
 import FileContext from './context/file-context';
 import { useRouter } from 'next/navigation';
 import BaseButton from '../common/btn/common-btn';
-import uploadFile from '@/http-client/method/upload';
+import uploadFile from '@/api/upload';
 
 const FileUploadComponent: React.FC = () => {
     const { file, setFile } = useContext(FileContext);

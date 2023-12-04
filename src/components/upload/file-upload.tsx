@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import UploadBtn from '@/components/common/btn/upload-btn';
 import FileContext from './context/file-context';
-import {  } from "@/http-client/client";
+import {  } from "@/api/http-client/client";
 
 const FileUpload: React.FC = () => {
     const { file, setFile } = useContext(FileContext);
