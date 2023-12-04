@@ -1,17 +1,12 @@
-import React, { ChangeEvent, useState } from 'react';
-import SelectFileInterface from '@/components/common/type/select-file';
+import React, { useContext, useEffect } from 'react';
+import FileContext from './context/file-context';
 
-const FileUploadComponent: React.FC<SelectFileInterface> = () => {
-    const [selectedFile, setSelectedFile] = useState<File | null>(null);
-
-    const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const file = event.target.files?.[0] || null;
-        setSelectedFile(file);
-    };
+const FileUploadComponent: React.FC = () => {
+    const { file, setFile } = useContext(FileContext);
 
     return (
         <div className="flex flex-col items-center p-8">
-            <h1 className="text-2xl font-bold mb-4 text-white">File Upload</h1>
+            {/* <h1 className="text-2xl font-bold mb-4 text-white">File Upload</h1>
             <div className="p-20 bg-white rounded">
                 <label className="flex items-center justify-center p-4 border-dashed border-2 border-gray-300 rounded cursor-pointer">
                     <span className="text-gray-800">{selectedFile ? selectedFile.name : "Choose a file" }</span>
@@ -21,7 +16,7 @@ const FileUploadComponent: React.FC<SelectFileInterface> = () => {
                         onChange={handleFileChange}
                     />
                 </label>
-            </div>
+            </div> */}
         </div>
     );
 };

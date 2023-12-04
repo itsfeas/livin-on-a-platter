@@ -1,12 +1,23 @@
 import Block from '@/components/blocks/block';
+import BaseLayout from '@/components/common/layout/base-layout';
+import FileContext from '@/components/upload/context/file-context';
 import FileUpload from '@/components/upload/file-upload';
+import { useState } from 'react';
 
-export default function Home() {
+const ViewPage: React.FC = () => {
+  const [file, setFile] = useState<File | null>(null);
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <BaseLayout>
       <Block minHeightScreen>
-        <FileUpload />
+        <FileContext.Provider value={{
+          file,
+          setFile
+          }} >
+          <FileUpload />
+        </FileContext.Provider>
       </Block>
-    </main>
+    </BaseLayout>
   )
 }
+
+export default ViewPage;
