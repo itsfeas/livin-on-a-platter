@@ -22,7 +22,7 @@ const get = async <T>(url: string, options?: RequestOptions): Promise<T> => {
     return handleResponse(response) as T;
 }
 
-const post = async <T>(url: string, data: string | FormData, options?: RequestOptions): Promise<T> => {
+const post = async <T>(url: string, data: any, options?: RequestOptions): Promise<T> => {
     const response = await fetch(url, { method: 'POST', body: data, ...options });
     return handleResponse(response) as T;
 }
