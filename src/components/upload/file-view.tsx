@@ -15,7 +15,7 @@ const FileUploadComponent: React.FC = () => {
         uploadApi.uploadFile(file)
             .then(value => console.log(value))
             .then(_ => setFile(null))
-            .then(_ => router.push('/success'));
+            // .then(_ => router.push('/success'));
     };
 
     const handleCancel = () => {
