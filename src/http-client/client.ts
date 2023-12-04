@@ -2,7 +2,7 @@ interface RequestOptions {
     headers?: HeadersInit;
 }
 
-const SERVER = "http://localhost:8080/api/v1/";
+const BASE_URL = "http://localhost:8080/api/v1/";
 
 const handleResponse = async (response: Response) => {
     if (!response.ok) {
@@ -22,9 +22,8 @@ const get = async <T>(url: string, options?: RequestOptions): Promise<T> => {
     return handleResponse(response) as T;
 }
 
-const post = async <T>(url: string, data: any, options?: RequestOptions): Promise<T> => {
-    const body = JSON.stringify(data);
-    const response = await fetch(url, { method: 'POST', body, ...options });
+const post = async <T>(url: string, data: string | FormData, options?: RequestOptions): Promise<T> => {
+    const response = await fetch(url, { method: 'POST', body: data, ...options });
     return handleResponse(response) as T;
 }
 
@@ -34,7 +33,7 @@ const del = async <T>(url: string, options?: RequestOptions): Promise<T> => {
 }
 
 export const httpClient = {
-    SERVER,
+    BASE_URL,
     get,
     post,
     delete: del,
