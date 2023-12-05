@@ -1,6 +1,4 @@
-"use client";
-
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import FileContext from './context/file-context';
 import { useRouter } from 'next/navigation';
 import BaseButton from '../common/btn/common-btn';
@@ -13,11 +11,12 @@ const FileUploadComponent: React.FC = () => {
     const handleConfirm = async () => {
         if (!file) return;
         const resp = await uploadApi.uploadFile(file);
+        console.log(resp);
         if (resp.status === "error") {
             alert("Error uploading file. Try again.")
             return;
         }
-        router.push('/success/' + resp.id);
+        router.push('/success/' + resp.data!.id);
     };
 
     const handleCancel = () => {
