@@ -1,8 +1,17 @@
 
 type BaseServerResponse = {
-    status: string = "ok" | "error"
+    status: int,
+    msg: string,
 }
 
-type ImageUploadResponse = BaseServerResponse & {
-    id: string
+type DataServerResponse = {
+    status: int,
+    msg: string,
+    data: any,
+}
+
+type ImageUploadResponse = DataServerResponse & {
+    data: {
+        id: string,
+    }
 }
