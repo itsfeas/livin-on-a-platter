@@ -10,12 +10,14 @@ const FileUploadComponent: React.FC = () => {
     const { file, setFile } = useContext(FileContext);
     const router = useRouter();
 
-    const handleConfirm = () => {
+    const handleConfirm = async () => {
         if (!file) return;
-        uploadApi.uploadFile(file)
-            .then(value => console.log(value))
-            .then(_ => setFile(null))
-            // .then(_ => router.push('/success'));
+        const resp = await uploadApi.uploadFile(file);
+        if (resp.status === "error") {
+            alert("Error uploading file. Try again.")
+            return;
+        }
+        router.push('/success/' + resp.id);
     };
 
     const handleCancel = () => {

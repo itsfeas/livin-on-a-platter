@@ -1,6 +1,6 @@
 
 type BaseServerResponse = {
-    status: string
+    status: string = "ok" | "error"
 }
 
 type ImageUploadResponse = BaseServerResponse & {
