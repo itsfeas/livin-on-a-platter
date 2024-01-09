@@ -1,11 +1,11 @@
 import React from 'react';
 
-interface ViewComponentComponentProps {
+export type ViewGenComponentProps = {
     baseImgUrl: string;
     genImages: Array<string>;
 }
 
-const ViewGenComponent: React.FC<ViewComponentComponentProps> = ({baseImgUrl, genImages}) => {
+const ViewGenComponent: React.FC<ViewGenComponentProps> = ({baseImgUrl, genImages}) => {
     return (
         <div className="flex flex-col items-center p-8">
             <h1 className="text-2xl font-bold mb-4">View Image</h1>
