@@ -5,19 +5,16 @@ import BaseLayout from '@/components/common/layout/base-layout';
 import FileContext from '@/components/upload/context/file-context';
 import FileUpload from '@/components/upload/file-upload';
 import FileView from '@/components/upload/file-view';
-import { useState } from 'react';
+import ViewGenComponent from '@/components/view/view-gen';
 
 const ViewPage: React.FC = () => {
-  const [file, setFile] = useState<File | null>(null);
-  return (
-    <BaseLayout>
-      <Block minHeightScreen>
-        <FileContext.Provider value={{ file, setFile }} >
-          { file ? <FileView /> : <FileUpload /> }
-        </FileContext.Provider>
-      </Block>
-    </BaseLayout>
-  )
+    return (
+        <BaseLayout>
+            <Block minHeightScreen>
+                <ViewGenComponent baseImgUrl={''} genImages={[]} />
+            </Block>
+        </BaseLayout>
+    )
 }
 
 export default ViewPage;
