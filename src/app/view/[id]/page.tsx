@@ -13,9 +13,7 @@ const ViewPage = async ({ params }: UrlParams) => {
             baseImgUrl: "",
             genImages: []
         };
-        console.log(`${API_URL}/view/${params.id}`);
         const res = await httpClient.get<DataServerResponse>(`${API_URL}/view/${params.id}`);
-        console.log("res", res);
         if (!res) {
             props.failed = true;
             return props;
@@ -28,7 +26,7 @@ const ViewPage = async ({ params }: UrlParams) => {
     return (
         <BaseLayout>
             <Block minHeightScreen>
-                <ViewGenComponent failed={props.failed} baseImgUrl={props.baseImgUrl} genImages={props.genImages} />
+                <ViewGenComponent {...props} />
             </Block>
         </BaseLayout>
     )
