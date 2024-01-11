@@ -16,7 +16,7 @@ const FileUploadComponent: React.FC = () => {
             alert("Error uploading file. Try again.")
             return;
         }
-        router.push('/success/' + resp.data!.id);
+        router.push('/view/' + resp.data!.id);
     };
 
     const handleCancel = () => {

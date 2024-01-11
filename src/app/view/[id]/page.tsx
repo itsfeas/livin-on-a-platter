@@ -25,7 +25,7 @@ const ViewPage = async ({ params }: UrlParams) => {
 
     return (
         <BaseLayout>
-            <Block minHeightScreen>
+            <Block>
                 <ViewGenComponent {...props} />
             </Block>
         </BaseLayout>
